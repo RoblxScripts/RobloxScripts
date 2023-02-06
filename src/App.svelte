@@ -21,6 +21,7 @@
 		'/discord': Discord,
 		'*': NotFound
 	}
+	// Test
 
 </script>
 
