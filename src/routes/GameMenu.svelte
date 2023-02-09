@@ -1,5 +1,5 @@
 <script>
-    import { blur } from "svelte/transition";
+    import { fade } from "svelte/transition";
     import {replace} from 'svelte-spa-router'
     import { onMount } from "svelte";
 
@@ -32,7 +32,7 @@
 
 </script>
 
-<game in:blur="{{duration: 500}}">
+<game in:fade="{{duration: 500}}">
 
     {#if game}
 

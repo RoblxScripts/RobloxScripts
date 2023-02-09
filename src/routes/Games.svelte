@@ -1,7 +1,8 @@
 <script>
-    import {fly} from 'svelte/transition';
+    import {fade, slide} from 'svelte/transition';
     import {replace} from 'svelte-spa-router';
     import { onMount } from 'svelte';
+    import Loading from './Loading.svelte';
 
     import { copy } from 'svelte-copy';
 
@@ -32,14 +33,14 @@
     {@html github}
 </svelte:head>
 
-<games in:fly="{{duration: 500}}">
+<games in:fade="{{duration: 250}}">
 
     <button on:click={go_back} id="goBack" class="goBack"><i class="fa-solid fa-arrow-left"></i></button>
     
     <h1 class="nosel">Games</h1>
 
     {#if show_modal}
-        <dialog open in:fly="{{duration: 500}}" out:fly="{{duration: 500}}">
+        <dialog open in:fade="{{duration: 500}}" out:fade="{{duration: 500}}">
             <article>
             <header>
                 <span>{sel_game.name}</span>
@@ -61,10 +62,10 @@
         </dialog>
     {/if}
 
-    <div class="games_list">
+    <div in:fade={{duration: 500}} class="games_list">
         
         {#each games as game}
-            <div id="games">
+            <div in:fade={{duration: 500}} id="games">
 
                 <div id="info">
                     <span>{game.name}</span>
@@ -88,7 +89,7 @@
             </div>
 
         {:else}
-            <h2>Loading...</h2>
+            <Loading/>
         {/each}
 
     </div>
